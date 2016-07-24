@@ -1,0 +1,51 @@
+<p>
+    Click on the "Create arrays" button and then open DevTools. Select the "Profiles" tab and then take a heap snapshot. Expand the "Array" constructor section to see the arrays that were created.
+</p>
+<button onclick="setTimeout('createArrays()', 2000)">Create arrays two seconds from now</button>
+<br>(Creation is delayed to make heap timeline recordings easier.)
+<script>
+function createArrays(){
+    const N = 1000000;
+
+    window.emptyArr = new Array(N)
+
+    window.strArr = []
+    for (var i = 0; i< N;i++){
+        var str = (Math.random() * 10000000000).toString().substr(0, 10)
+        window.strArr.push(str)
+    }
+
+    window.sameStrArr = []
+    for (var i = 0; i< N;i++){
+        window.sameStrArr.push("Hello")
+    }
+
+    window.numArr = []
+    for (var i = 0; i< N;i++){
+        window.numArr.push(Math.random())
+    }
+
+    window.objArr = []
+    for (var i = 0; i< N;i++){
+        window.objArr.push({})
+    }
+
+    window.boolArr = []
+    for (var i = 0; i< N;i++){
+        window.boolArr.push(true)
+    }
+
+    window.arrayArr = []
+    for (var i = 0; i< N;i++){
+        window.arrayArr.push([])
+    }
+
+    window.mixedArr = []
+    for (var i = 0; i< N;i++){
+        window.mixedArr.push(false)
+    }
+    window.mixedArr.shift()
+    window.mixedArr.push({})
+}
+
+</script>
